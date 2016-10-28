@@ -23,6 +23,10 @@
  *    Ricardo Henrique Simplicio Dimas <rhenrique.dimas@gmail.com>          *
  *    Webpage: http://www.upe.br                                            *
  *    Phone: +55 (81) 99730-4919                                            *
+ *                                                                          *
+ *    Milena Maria Costa Pininga <milena.pininga@gmail.com>                 *
+ *    Webpage: http://www.upe.br                                            *
+ *    Phone: +55 (81) 99834-5265                                            *
  * ************************************************************************ *
  * 
  */
