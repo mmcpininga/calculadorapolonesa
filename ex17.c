@@ -52,13 +52,27 @@ elementosp pop (pilha **); /*retira elemento da pilha*/
 void push (pilha ** pil, elementosp item)
 {
     pilha * p_aux;
-    p_aux = (pilha*) malloc (sizeof(pilha));
+    p_aux = (pilha *) malloc (sizeof(pilha));
 
     p_aux-> info = item;
     p_aux-> prox = * pil;
     * pil = p_aux;
 }
 
+elementosp pop (pilha ** pil)
+{
+    pilha * p_aux;
+    elementosp item = {0};
+    
+    if (pil == NULL)
+        return item;
+
+    item = (* pil)-> info;
+    p_aux = * pil;
+    * pil = (*pil)-> prox;
+    free(p_aux);
+    return item;
+}
 
 
 int main(int argc, char *argv)
