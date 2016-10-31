@@ -32,6 +32,23 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+
+typedef struct /*estrutura com os elementos da pilha*/
+    {
+    char c;
+    } elementosp;
+
+struct dado_pilha /*estrutura com os dados da pilha*/
+    {
+    elementosp info;
+    struct dado_pilha *prox;
+    };
+
+typedef struct dado_pilha pilha; /*dados da pilha*/
+void push(pilha **, elementosp); /*add elemento na pilha*/
+elementosp pop (pilha **); /*retira elemento da pilha*/
+
 
 int main(int argc, char *argv)
 {
