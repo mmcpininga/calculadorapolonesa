@@ -49,6 +49,17 @@ typedef struct dado_pilha pilha; /*dados da pilha*/
 void push(pilha **, elementosp); /*add elemento na pilha*/
 elementosp pop (pilha **); /*retira elemento da pilha*/
 
+void push (pilha ** pil, elementosp item)
+{
+    pilha * p_aux;
+    p_aux = (pilha*) malloc (sizeof(pilha));
+
+    p_aux-> info = item;
+    p_aux-> prox = * pil;
+    * pil = p_aux;
+}
+
+
 
 int main(int argc, char *argv)
 {
