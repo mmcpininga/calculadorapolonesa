@@ -34,6 +34,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAX 10
+
 typedef struct /*estrutura com os elementos da pilha*/
     {
     char c;
@@ -49,34 +51,41 @@ typedef struct dado_pilha pilha; /*dados da pilha*/
 void push(pilha **, elementosp); /*add elemento na pilha*/
 elementosp pop (pilha **); /*retira elemento da pilha*/
 
-void push (pilha ** pil, elementosp item)
+void push (pilha **pil, elementosp item)
 {
-    pilha * p_aux;
+    pilha *p_aux;
     p_aux = (pilha *) malloc (sizeof(pilha));
 
     p_aux-> info = item;
-    p_aux-> prox = * pil;
-    * pil = p_aux;
+    p_aux-> prox = *pil;
+    *pil = p_aux;
 }
 
-elementosp pop (pilha ** pil)
+elementosp pop (pilha **pil)
 {
-    pilha * p_aux;
+    pilha *p_aux;
     elementosp item = {0};
     
     if (pil == NULL)
         return item;
 
-    item = (* pil)-> info;
-    p_aux = * pil;
-    * pil = (*pil)-> prox;
+    item = (*pil)-> info;
+    p_aux = *pil;
+    *pil = (*pil)-> prox;
     free(p_aux);
     return item;
 }
 
 
-int main(int argc, char *argv)
+int main(int argc, char *argv[])
 {
-    return 0;
+    char expressao[MAX];
+
+    printf("Calcular expressao: ");
+    fgets(expressao, MAX, stdin);
+
+    print("\n");
+
+    return EXIT_SUCCESS;
 }
 
