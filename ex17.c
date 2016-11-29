@@ -80,11 +80,31 @@ elementosp pop (pilha **pil)
 int main(int argc, char *argv[])
 {
     char expressao[MAX];
+    int i;
+
 
     printf("Calcular expressao: ");
     fgets(expressao, MAX, stdin);
 
-    print("\n");
+   for (i=0;i<MAX+1;i++)
+   {   //identifica se eh operador
+       if (expressao[i]!='*' && expressao[i]!='/' && expressao[i]!='+' && expressao[i]!='-')
+       {
+       
+           //push
+           printf("numero: %c",expressao[i]);      
+       }
+       //identifica se eh numero
+       else
+       {
+           //pop pop opera push         
+           printf("operador: %c",expressao[i]);    
+       }
+
+   }
+
+
+    //print("\n");
 
     return EXIT_SUCCESS;
 }
