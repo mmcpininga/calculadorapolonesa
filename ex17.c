@@ -76,6 +76,22 @@ elementosp pop (pilha **pil)
     return item;
 }
 
+void operacao(char op)
+{   
+    double dir,esq,result;
+    //dir=pop;
+    //esq=pop;
+    switch(op)
+    {
+        case '+': result= esq + dir; break;
+        case '-': result= esq - dir; break;
+        case '/': result= esq / dir; break;
+        case '*': result= esq * dir; break;
+    }
+    printf("%g\n,result");
+    //push(result);
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -97,7 +113,7 @@ int main(int argc, char *argv[])
        //identifica se eh numero
        else
        {
-           //pop pop opera push         
+           //funcao operacao         
            printf("operador: %c",expressao[i]);    
        }
 
