@@ -78,25 +78,31 @@ elementosp pop (pilha **pil)
 
 void operacao(char op)
 {   
-    double dir,esq,result;
+    double dir, esq, result;
     //dir=pop;
     //esq=pop;
     switch(op)
     {
-        case '+': result= esq + dir; break;
-        case '-': result= esq - dir; break;
-        case '/': result= esq / dir; break;
-        case '*': result= esq * dir; break;
+        case '+': result = esq + dir; break;
+        case '-': result = esq - dir; break;
+        case '/': result = esq / dir; break;
+        case '*': result = esq * dir; break;
     }
-    printf("%g\n,result");
+    printf("Resultado: %f\n", result);
     //push(result);
 }
 
 
 int main(int argc, char *argv[])
 {
-    char expressao[MAX];
+    if(argc > 1)
+    {
+        printf("Este programa não aceita entradas externas como %s\n", argv[1]);
+        return EXIT_FAILURE;
+    }
+
     int i;
+    char *expressao[MAX];
 
 
     printf("Calcular expressao: ");
@@ -108,13 +114,13 @@ int main(int argc, char *argv[])
        {
        
            //push
-           printf("numero: %c",expressao[i]);      
+           printf("numero: %c\n",expressao[i]);      
        }
        //identifica se eh numero
        else
        {
            //funcao operacao         
-           printf("operador: %c",expressao[i]);    
+           printf("operador: %c\n",expressao[i]);    
        }
 
    }
