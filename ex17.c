@@ -102,6 +102,15 @@ stack* expression_data()
     char data[INFO_SIZE];
     Stack* Stack* stackHeader;
     stackHeader = (Stack*)malloc(sizeof(Stack));
+
+    while(true)
+    {
+        printf("Digite um caracter da expressão (Digite \'q\' para sair)\n");
+        fgets(data, INFO_SIZE, stdin);
+
+        // Digitar condicoes:
+
+    }
 }
 
 int main(void)
