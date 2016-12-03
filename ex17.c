@@ -97,5 +97,10 @@ void operation (Stack** stackHeader, char op)
     push(&(*stackHeader), buffer);
 }
 
-
+stack* expression_data()
+{
+    char data[INFO_SIZE];
+    Stack* Stack* stackHeader;
+    stackHeader = (Stack*)malloc(sizeof(Stack));
+}
 
