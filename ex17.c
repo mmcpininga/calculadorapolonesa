@@ -86,7 +86,7 @@ void operation (Stack** stackHeader, char op)
     {
         case '+': result = left + right; break;
         case '-': result = left - right; break;
-        case '*': result = left * right; break
+        case '*': result = left * right; break;
         case '/':result = left / right; break;
     }
 
