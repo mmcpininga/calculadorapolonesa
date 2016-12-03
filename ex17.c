@@ -104,3 +104,9 @@ stack* expression_data()
     stackHeader = (Stack*)malloc(sizeof(Stack));
 }
 
+int main(void)
+{
+    Stack* stackHeader = expression_data();
+
+    return 0;
+}
