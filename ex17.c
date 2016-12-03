@@ -118,13 +118,15 @@ Stack* expression_data()
 
     }
 
-    printf("\nResultado Final: %s",stackHeader->info);
+    printf("\nResultado Final: %s\n", stackHeader->info);
     return stackHeader;
 }
 
 int main(void)
 {
     Stack* stackHeader = expression_data();
+
+    free(stackHeader);
 
     return 0;
 }
