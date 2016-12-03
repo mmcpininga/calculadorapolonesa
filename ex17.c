@@ -31,103 +31,71 @@
  * 
  */
 
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <stdbool.h>
 
-#define MAX 10
+#define INFO_SIZE 10
 
-typedef struct /*estrutura com os elementos da pilha*/
-    {
-    char c;
-    } elementosp;
+struct StackStruct {
+    char* info;
+    struct StackStruct *next;
+};
 
-struct dado_pilha /*estrutura com os dados da pilha*/
-    {
-    elementosp info;
-    struct dado_pilha *prox;
-    };
+typedef struct StackStruct Satck;
 
-typedef struct dado_pilha pilha; /*dados da pilha*/
-void push(pilha **, elementosp); /*add elemento na pilha*/
-elementosp pop (pilha **); /*retira elemento da pilha*/
-
-void push (pilha **pil, elementosp item)
+void push (Stack** stackHeader, char* newItem)
 {
-    pilha *p_aux;
-    p_aux = (pilha *) malloc (sizeof(pilha));
+    Stack* p_aux;
+    p_aux = (Stack *)malloc(sizeof(Stack));
 
-    p_aux-> info = item;
-    p_aux-> prox = *pil;
-    *pil = p_aux;
+    p_aux->info = (char*)malloc(sizeof(char) * INFO_SIZE);
+    strcpy(p_aux->info, newItem);
+    p_aux->next = *stackHeader;
+
+    *stackHeader = p_aux;
 }
 
-elementosp pop (pilha **pil)
+char* pop (Stack** stackHeader)
 {
-    pilha *p_aux;
-    elementosp item = {0};
-    
-    if (pil == NULL)
-        return item;
+    char* info;
+    info = (char*)malloc(sizeof(char) * INFO_SIZE);
 
-    item = (*pil)-> info;
-    p_aux = *pil;
-    *pil = (*pil)-> prox;
+    if (stackHeader == NULL)
+        return NULL;
+
+    Stack* p_aux;
+
+    strcpy(info, (*stackHeader)->info);
+    p_aux = *stackHeader;
+    *stackHeader = (*stackHeader)->next;
+
     free(p_aux);
-    return item;
+    return info;
 }
 
-void operacao(char op)
-{   
-    double dir, esq, result;
-    //dir=pop;
-    //esq=pop;
-    switch(op)
-    {
-        case '+': result = esq + dir; break;
-        case '-': result = esq - dir; break;
-        case '/': result = esq / dir; break;
-        case '*': result = esq * dir; break;
-    }
-    printf("Resultado: %f\n", result);
-    //push(result);
-}
-
-
-int main(int argc, char *argv[])
+void operation (Stack** stackHeader, char op)
 {
-    if(argc > 1)
+    double right, left, result;
+    right = atof(pop(&(*stackHeader)));
+    left = atof(pop(&(*stackHeader)));
+
+    switch (op)
     {
-        printf("Este programa não aceita entradas externas como %s\n", argv[1]);
-        return EXIT_FAILURE;
+        case '+': result = left + right; break;
+        case '-': result = left - right; break;
+        case '*': result = left * right; break
+        case '/':result = left / right; break;
     }
 
-    int i;
-    char *expressao[MAX];
+    char* buffer;
+    buffer = (char*)malloc(sizeof(char) * INFO_SIZE);
 
-
-    printf("Calcular expressao: ");
-    fgets(expressao, MAX, stdin);
-
-   for (i=0;i<MAX+1;i++)
-   {   //identifica se eh operador
-       if (expressao[i]!='*' && expressao[i]!='/' && expressao[i]!='+' && expressao[i]!='-')
-       {
-       
-           //push
-           printf("numero: %c\n",expressao[i]);      
-       }
-       //identifica se eh numero
-       else
-       {
-           //funcao operacao         
-           printf("operador: %c\n",expressao[i]);    
-       }
-
-   }
-
-
-    //print("\n");
-
-    return EXIT_SUCCESS;
+    sprintf(buffer, "%4.8f", result);
+    push(&(*stackHeader), buffer);
 }
+
+
 
