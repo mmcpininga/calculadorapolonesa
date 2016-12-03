@@ -44,7 +44,7 @@ struct StackStruct {
     struct StackStruct *next;
 };
 
-typedef struct StackStruct Satck;
+typedef struct StackStruct Stack;
 
 void push (Stack** stackHeader, char* newItem)
 {
@@ -97,10 +97,10 @@ void operation (Stack** stackHeader, char op)
     push(&(*stackHeader), buffer);
 }
 
-stack* expression_data()
+Stack* expression_data()
 {
     char data[INFO_SIZE];
-    Stack* Stack* stackHeader;
+    Stack* stackHeader;
     stackHeader = (Stack*)malloc(sizeof(Stack));
 
     while(true)
@@ -108,9 +108,18 @@ stack* expression_data()
         printf("Digite um caracter da expressão (Digite \'q\' para sair)\n");
         fgets(data, INFO_SIZE, stdin);
 
-        // Digitar condicoes:
+        //condições de entrada na pilha
+       if (data[0] == 'q')
+           break;
+       if (data[0] != '+' && data [0] != '-' && data[0] != '*' && data[0] != '/')
+           push(&stackHeader, data);
+       else
+           operation(&stackHeader, data[0]);
 
     }
+
+    printf("\nResultado Final: %s",stackHeader->info);
+    return stackHeader;
 }
 
 int main(void)
